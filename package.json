@@ -14,6 +14,8 @@
     "@payloadcms/next": "^3.62.1",
     "@payloadcms/payload-cloud": "^3.62.1",
     "@payloadcms/richtext-lexical": "^3.62.1",
+    "@payloadcms/storage-s3": "^3.62.1",
+    "@payloadcms/storage-vercel-blob": "^3.62.1",
     "graphql": "^16.8.1",
     "next": "16.0.1",
     "payload": "^3.62.1",
