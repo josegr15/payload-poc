@@ -9,8 +9,8 @@ type PageParams = {
 }
 
 // Enable ISR: pages will regenerate at most once every 60 seconds
-// Set to 0 for development to always fetch fresh content
-export const revalidate = process.env.NODE_ENV === 'production' ? 60 : 0
+// On-demand revalidation hooks in Page collection will trigger immediate updates
+export const revalidate = 60
 
 export default async function Page({ params }: { params: Promise<PageParams> }) {
   const { slug } = await params
