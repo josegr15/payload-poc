@@ -15,19 +15,16 @@ const revalidatePage = async (slug: string) => {
     
     const path = slug === '/home' ? '/' : slug
     const revalidateUrl = `${baseUrl}/api/revalidate`
-    const secret = process.env.REVALIDATE_SECRET || ''
     
     console.log('📍 Revalidation details:', {
       url: revalidateUrl,
       path,
-      hasSecret: !!secret,
     })
     
     const response = await fetch(revalidateUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-revalidate-secret': secret,
       },
       body: JSON.stringify({
         path,

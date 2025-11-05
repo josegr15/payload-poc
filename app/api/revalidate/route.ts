@@ -3,24 +3,6 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(request: NextRequest) {
   try {
-    const secret = request.headers.get('x-revalidate-secret')
-    const expectedSecret = process.env.REVALIDATE_SECRET
-    
-    // In development, allow revalidation without secret or with empty secret
-    // In production, require the secret
-    const isDevelopment = process.env.NODE_ENV === 'development'
-    
-    if (!isDevelopment && expectedSecret && secret !== expectedSecret) {
-      console.error('❌ Revalidation rejected: Invalid secret')
-      return NextResponse.json(
-        { message: 'Invalid secret' },
-        { status: 401 }
-      )
-    }
-    
-    if (!isDevelopment && !expectedSecret) {
-      console.warn('⚠️ REVALIDATE_SECRET not set in production')
-    }
 
     const body = await request.json()
     const { path, type } = body
