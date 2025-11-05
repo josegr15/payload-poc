@@ -1,7 +1,7 @@
 import type { CollectionConfig } from 'payload'
-import { FeatureGridCardsBlock } from '../blocks/FeatureGridCardsBlock'
+import { FeatureGridCardsBlock } from '../blocks/FeatureGridCardsBlock.ts'
 
-export const Page: CollectionConfig = {
+const Page: CollectionConfig = {
   slug: 'page',
   admin: {
     useAsTitle: 'title',
@@ -33,3 +33,4 @@ export const Page: CollectionConfig = {
   ],
 }
 
+export default Page

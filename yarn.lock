@@ -603,20 +603,6 @@
     "@smithy/types" "^4.8.1"
     tslib "^2.6.2"
 
-"@aws-sdk/s3-request-presigner@^3.614.0":
-  version "3.922.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/s3-request-presigner/-/s3-request-presigner-3.922.0.tgz#f71ad9565d2f1e790ed258c192e3844430ce484c"
-  integrity sha512-x/WZXOMAN10X/hbjHnaXjtU34RmV3/eJMiHoJsohquSgz8+pfRN1DeK65oa/XPoKCMPfV31RfHSzCduligHfsQ==
-  dependencies:
-    "@aws-sdk/signature-v4-multi-region" "3.922.0"
-    "@aws-sdk/types" "3.922.0"
-    "@aws-sdk/util-format-url" "3.922.0"
-    "@smithy/middleware-endpoint" "^4.3.6"
-    "@smithy/protocol-http" "^5.3.4"
-    "@smithy/smithy-client" "^4.9.2"
-    "@smithy/types" "^4.8.1"
-    tslib "^2.6.2"
-
 "@aws-sdk/signature-v4-multi-region@3.922.0":
   version "3.922.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/signature-v4-multi-region/-/signature-v4-multi-region-3.922.0.tgz#37e30499d805ac0cffbd14b448f7d2a58bbea132"
@@ -666,16 +652,6 @@
     "@smithy/types" "^4.8.1"
     "@smithy/url-parser" "^4.2.4"
     "@smithy/util-endpoints" "^3.2.4"
-    tslib "^2.6.2"
-
-"@aws-sdk/util-format-url@3.922.0":
-  version "3.922.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/util-format-url/-/util-format-url-3.922.0.tgz#a1b91b180d75a73dd8eedee0913a60153673392e"
-  integrity sha512-UYLWPvZEd6TYilNkrQrIeXh2bXZsY3ighYErSEjD24f3JQhg0XdXoR/QHIE8licHu2qFrTRM6yi9LH1GY6X0cg==
-  dependencies:
-    "@aws-sdk/types" "3.922.0"
-    "@smithy/querystring-builder" "^4.2.4"
-    "@smithy/types" "^4.8.1"
     tslib "^2.6.2"
 
 "@aws-sdk/util-locate-window@^3.0.0":
@@ -2259,16 +2235,6 @@
     react-error-boundary "4.1.2"
     ts-essentials "10.0.3"
     uuid "10.0.0"
-
-"@payloadcms/storage-s3@^3.62.1":
-  version "3.62.1"
-  resolved "https://registry.yarnpkg.com/@payloadcms/storage-s3/-/storage-s3-3.62.1.tgz#b4832066db264a3207502d61d49aca36adb06a6c"
-  integrity sha512-ppN11k+STBqgVTYIDjNG+F2jsYLsQqQKfptQkT/GoDA5KaiHz5hShz4EtJiNx+ur1ZYGOYr8Qyy+UEGxILrvpw==
-  dependencies:
-    "@aws-sdk/client-s3" "^3.614.0"
-    "@aws-sdk/lib-storage" "^3.614.0"
-    "@aws-sdk/s3-request-presigner" "^3.614.0"
-    "@payloadcms/plugin-cloud-storage" "3.62.1"
 
 "@payloadcms/storage-vercel-blob@^3.62.1":
   version "3.62.1"
