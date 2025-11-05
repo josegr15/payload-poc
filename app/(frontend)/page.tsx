@@ -10,7 +10,6 @@ export default async function HomePage() {
   
   // Fetch the page with slug '/home'
   const result = await payload.find({
-    // @ts-expect-error - Collection type will be available after types regenerate
     collection: 'page',
     where: {
       slug: {

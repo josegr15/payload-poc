@@ -19,7 +19,6 @@ export default async function Page({ params }: { params: Promise<PageParams> }) 
 
   // Type assertion needed until Payload regenerates types
   const result = await payload.find({
-    // @ts-expect-error - Collection type will be available after types regenerate
     collection: 'page',
     where: {
       slug: {
