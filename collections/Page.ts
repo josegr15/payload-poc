@@ -2,6 +2,8 @@ import type { CollectionConfig } from 'payload'
 import { FeatureGridCardsBlock } from '../blocks/FeatureGridCardsBlock.ts'
 
 const revalidatePage = async (slug: string) => {
+  console.log('🔄 Revalidating page:', slug)
+  
   try {
     // Determine the base URL for revalidation
     let baseUrl = 'http://localhost:3000'
@@ -12,20 +14,44 @@ const revalidatePage = async (slug: string) => {
     }
     
     const path = slug === '/home' ? '/' : slug
+    const revalidateUrl = `${baseUrl}/api/revalidate`
+    const secret = process.env.REVALIDATE_SECRET || ''
     
-    await fetch(`${baseUrl}/api/revalidate`, {
+    console.log('📍 Revalidation details:', {
+      url: revalidateUrl,
+      path,
+      hasSecret: !!secret,
+    })
+    
+    const response = await fetch(revalidateUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-revalidate-secret': process.env.REVALIDATE_SECRET || '',
+        'x-revalidate-secret': secret,
       },
       body: JSON.stringify({
         path,
         type: 'path',
       }),
     })
+    
+    const result = await response.json()
+    
+    if (!response.ok) {
+      console.error('❌ Revalidation failed:', {
+        status: response.status,
+        statusText: response.statusText,
+        result,
+      })
+    } else {
+      console.log('✅ Revalidation successful:', result)
+    }
   } catch (error) {
-    console.error('Error revalidating page:', error)
+    console.error('❌ Error revalidating page:', error)
+    if (error instanceof Error) {
+      console.error('Error message:', error.message)
+      console.error('Error stack:', error.stack)
+    }
   }
 }
 
@@ -40,9 +66,17 @@ const Page: CollectionConfig = {
   hooks: {
     afterChange: [
       async ({ doc, operation }) => {
+        console.log('📝 Page afterChange hook triggered:', {
+          operation,
+          slug: doc.slug,
+          id: doc.id,
+        })
+        
         // Revalidate the page when it's created or updated
         if (doc.slug) {
           await revalidatePage(doc.slug)
+        } else {
+          console.warn('⚠️ No slug found in document, skipping revalidation')
         }
       },
     ],
