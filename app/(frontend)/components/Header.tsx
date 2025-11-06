@@ -49,7 +49,7 @@ export function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <Link 
               href="/get-started" 
-              className="px-6 py-2.5 bg-pink-600 hover:bg-pink-700 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              className="px-6 py-2.5 bg-pink-600 hover:bg-pink-700 text-white !text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
               Get Started
             </Link>

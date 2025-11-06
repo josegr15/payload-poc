@@ -14,6 +14,8 @@ import sharp from 'sharp'
 import Users from './collections/Users.ts'
 import Media from './collections/Media.ts'
 import Page from './collections/Page.ts'
+import Blog from './collections/Blog.ts'
+import Author from './collections/Author.ts'
 // ...
 
 const filename = fileURLToPath(import.meta.url)
@@ -27,7 +29,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Page],
+  collections: [Users, Media, Page, Blog, Author],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

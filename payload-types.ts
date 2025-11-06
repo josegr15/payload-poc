@@ -70,6 +70,8 @@ export interface Config {
     users: User;
     media: Media;
     page: Page;
+    blog: Blog;
+    author: Author;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -80,6 +82,8 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     page: PageSelect<false> | PageSelect<true>;
+    blog: BlogSelect<false> | BlogSelect<true>;
+    author: AuthorSelect<false> | AuthorSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -196,6 +200,72 @@ export interface Page {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog".
+ */
+export interface Blog {
+  id: number;
+  title: string;
+  /**
+   * URL-friendly identifier (e.g., "my-first-post")
+   */
+  slug: string;
+  /**
+   * Header image for the blog post
+   */
+  headerImage?: (number | null) | Media;
+  /**
+   * Select the author of this blog post
+   */
+  author: number | Author;
+  /**
+   * Publication date
+   */
+  publishedDate: string;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "author".
+ */
+export interface Author {
+  id: number;
+  /**
+   * Author full name
+   */
+  name: string;
+  /**
+   * Short biography
+   */
+  bio?: string | null;
+  /**
+   * Author profile picture
+   */
+  avatar?: (number | null) | Media;
+  /**
+   * Contact email
+   */
+  email?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -229,6 +299,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'page';
         value: number | Page;
+      } | null)
+    | ({
+        relationTo: 'blog';
+        value: number | Blog;
+      } | null)
+    | ({
+        relationTo: 'author';
+        value: number | Author;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -344,6 +422,32 @@ export interface PageSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog_select".
+ */
+export interface BlogSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  headerImage?: T;
+  author?: T;
+  publishedDate?: T;
+  content?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "author_select".
+ */
+export interface AuthorSelect<T extends boolean = true> {
+  name?: T;
+  bio?: T;
+  avatar?: T;
+  email?: T;
   updatedAt?: T;
   createdAt?: T;
 }
