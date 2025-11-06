@@ -9,8 +9,24 @@ type BlogParams = {
   slug: string
 }
 
-// Enable ISR: pages will regenerate at most once every 60 seconds
-export const revalidate = 60
+// Generate static params for all blog posts at build time
+export async function generateStaticParams() {
+  const payloadConfig = await config
+  const payload = await getPayload({ config: payloadConfig })
+  
+  const result = await payload.find({
+    collection: 'blog',
+    limit: 1000, // Adjust if you have more than 1000 blog posts
+    depth: 0,
+  })
+  
+  return result.docs.map((blog) => ({
+    slug: blog.slug as string,
+  }))
+}
+
+// Static generation - pages are generated at build time
+export const dynamicParams = false // Return 404 for unknown slugs
 
 export default async function BlogPage({ params }: { params: Promise<BlogParams> }) {
   const { slug } = await params
