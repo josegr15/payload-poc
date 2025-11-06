@@ -25,8 +25,9 @@ export async function generateStaticParams() {
   }))
 }
 
-// Static generation - pages are generated at build time
-export const dynamicParams = false // Return 404 for unknown slugs
+// Static generation with fallback - pages are generated at build time
+// New blog posts created after build will be generated on-demand
+export const dynamicParams = true
 
 export default async function BlogPage({ params }: { params: Promise<BlogParams> }) {
   const { slug } = await params
