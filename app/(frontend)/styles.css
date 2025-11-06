@@ -1,5 +1,102 @@
 @import "tailwindcss";
 
+@theme {
+  /* Base colors */
+  --color-black: #000;
+  --color-white: #fff;
+  
+  /* White scale */
+  --color-white-100: #F5F5F5;
+  
+  /* Gray scale - override defaults */
+  --color-gray-100: #F3F3F4;
+  --color-gray-200: #DEDFE2;
+  --color-gray-300: #CACCD0;
+  --color-gray-400: #A1A5AD;
+  --color-gray-500: #8E929B;
+  --color-gray-600: #7C8088;
+  --color-gray-700: #5B5D63;
+  --color-gray-800: #3A3C40;
+  --color-gray-900: #1C1E20;
+  --color-gray-950: #080709;
+  
+  /* Blue scale - override defaults */
+  --color-blue-100: #F0F4FE;
+  --color-blue-200: #D4DFFC;
+  --color-blue-300: #B7CCFA;
+  --color-blue-400: #80A4F2;
+  --color-blue-500: #5F91EF;
+  --color-blue-600: #327EEA;
+  --color-blue-700: #1658BF;
+  --color-blue-800: #0D3883;
+  --color-blue-900: #0D1D39;
+  --color-blue-950: #1B1B1B;
+  --color-blue-1000: #001B38;
+  
+  /* Violet scale */
+  --color-violet-100: #F8F1FE;
+  --color-violet-200: #E2DCF6;
+  --color-violet-300: #D0C6F0;
+  --color-violet-400: #AF96F6;
+  --color-violet-500: #B375F4;
+  --color-violet-600: #A857F1;
+  --color-violet-700: #8034BF;
+  --color-violet-800: #5B1F76;
+  --color-violet-900: #300C41;
+  --color-violet-1000: #240631;
+  
+  /* Green scale - override defaults */
+  --color-green-100: #E6F8F0;
+  --color-green-200: #C1E8CF;
+  --color-green-300: #9ED9B3;
+  --color-green-400: #52B96B;
+  --color-green-500: #48A45F;
+  --color-green-600: #3E9052;
+  --color-green-700: #2C6845;
+  --color-green-800: #1A442C;
+  --color-green-900: #0A2214;
+  --color-green-1000: #357C4C;
+  
+  /* Citron scale */
+  --color-citron-100: #EEFC97;
+  --color-citron-500: #DEE948;
+  --color-citron-700: #D3D140;
+  --color-citron-900: #1D1F04;
+  
+  /* Salmon scale */
+  --color-salmon-100: #FEF1EF;
+  --color-salmon-200: #FED7D2;
+  --color-salmon-300: #FFBBB6;
+  --color-salmon-400: #FF7E7B;
+  --color-salmon-500: #FF7E7B;
+  --color-salmon-600: #FC1A01;
+  --color-salmon-700: #BA1200;
+  --color-salmon-800: #7D0800;
+  --color-salmon-900: #390400;
+  
+  /* Yellow scale - override defaults */
+  --color-yellow-100: #FBF4D7;
+  --color-yellow-200: #F4DE9B;
+  --color-yellow-300: #F4DE9B;
+  --color-yellow-400: #D49B33;
+  --color-yellow-500: #C2863F;
+  --color-yellow-600: #AD7437;
+  --color-yellow-700: #7C5430;
+  --color-yellow-800: #682800;
+  --color-yellow-900: #3A1000;
+  
+  /* Pink scale */
+  --color-pink-100: #FCF0F9;
+  --color-pink-200: #F6D6ED;
+  --color-pink-300: #F0BCE4;
+  --color-pink-400: #F777D1;
+  --color-pink-500: #F74FBB;
+  --color-pink-600: #E22EB8;
+  --color-pink-700: #A91F7D;
+  --color-pink-800: #6F1258;
+  --color-pink-900: #3D052B;
+}
+
 :root {
   --font-mono: 'Roboto Mono', monospace;
 }
@@ -12,7 +109,7 @@ html {
   font-size: 18px;
   line-height: 32px;
 
-  background: rgb(0, 0, 0);
+  background: #fff;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -28,7 +125,8 @@ body {
   line-height: 32px;
 
   margin: 0;
-  color: rgb(1000, 1000, 1000);
+  background: #fff;
+  color: #000;
 
   @media (max-width: 1024px) {
     font-size: 15px;
@@ -43,13 +141,11 @@ img {
 }
 
 h1 {
-  margin: 40px 0;
   font-size: 64px;
   line-height: 70px;
   font-weight: bold;
 
   @media (max-width: 1024px) {
-    margin: 24px 0;
     font-size: 42px;
     line-height: 42px;
   }
